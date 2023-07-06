@@ -1,4 +1,4 @@
-package com.example.erkinbekovbilimdz3_month6.ui.adapter
+package com.example.erkinbekovbilimdz3_month6.ui.playList.adapter
 
 import android.annotation.SuppressLint
 import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel.Item
@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.erkinbekovbilimdz3_month6.databinding.ItemPlaylistBinding
 import com.example.erkinbekovbilimdz3_month6.utils.loadImage
 
-class PlaylistAdapter : Adapter<PlaylistAdapter.PlaylistViewHolder>() {
+class PlaylistAdapter(private val onClick: (Item) -> Unit) :
+    Adapter<PlaylistAdapter.PlaylistViewHolder>() {
 
-    private var data = arrayListOf<Item>()
+    private var data = ArrayList<Item>()
 
     fun addList(list: List<Item>) {
         val previousSize = data.size
@@ -46,6 +47,9 @@ class PlaylistAdapter : Adapter<PlaylistAdapter.PlaylistViewHolder>() {
                 tvVideoTitle.text = item.snippet.title
                 tvCountVideo.text = item.contentDetails.itemCount.toString() + " video series"
                 imgPreview.loadImage(item.snippet.thumbnails.high.url)
+            }
+            itemView.setOnClickListener {
+                onClick.invoke(item)
             }
         }
     }

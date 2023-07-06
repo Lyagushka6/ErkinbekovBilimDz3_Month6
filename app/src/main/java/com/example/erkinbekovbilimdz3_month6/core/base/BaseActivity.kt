@@ -20,7 +20,8 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
 
         setupLiveData()
         checkInternet()
-        initialized()
+        setData()
+        initClickListener()
     }
 
     open fun setupLiveData() {
@@ -31,7 +32,11 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
 
     }
 
-    open fun initialized(){
+    open fun setData(){
+
+    }
+
+    open fun initClickListener(){
 
     }
 }

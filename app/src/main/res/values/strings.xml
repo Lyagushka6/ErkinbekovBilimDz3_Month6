@@ -8,4 +8,11 @@
     <string name="video_int">9 video</string>
     <string name="no_internet_connection">No Internet Connection</string>
     <string name="try_again">Try again</string>
+    <string name="timer_test">04:14</string>
+    <string name="back">Back</string>
+    <string name="playlist_detail">Playlist</string>
+    <string name="test_text1">Emotional Well-being Healing Practices for Children</string>
+    <string name="test_text2">In this series, we break down the impact of displacement, instability, violence, and trauma in children, and offer exercises to support children in their healing journey.</string>
+    <string name="video_series">32 video series</string>
+    <string name="text_test4">HOW DISPLACEMENT INSTABILITY UNCERTAINTY AFFECT ...</string>
 </resources>
