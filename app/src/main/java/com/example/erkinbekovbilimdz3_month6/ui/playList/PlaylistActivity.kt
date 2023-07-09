@@ -1,6 +1,4 @@
 package com.example.erkinbekovbilimdz3_month6.ui.playList
-
-
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.viewModels

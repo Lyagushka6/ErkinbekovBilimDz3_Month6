@@ -9,6 +9,6 @@ import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel
 
 class PlaylistViewModel() : BaseViewModel() {
     fun getPlaylist(): LiveData<Resource<PlaylistModel>> {
-        return repository.getPlaylists()
+        return repository.getPlayLists()
     }
 }
