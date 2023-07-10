@@ -1,11 +1,11 @@
 package com.example.erkinbekovbilimdz3_month6.ui.playList.adapter
 
 import android.annotation.SuppressLint
-import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel.Item
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel.Item
 import com.example.erkinbekovbilimdz3_month6.databinding.ItemPlaylistBinding
 import com.example.erkinbekovbilimdz3_month6.utils.loadImage
 

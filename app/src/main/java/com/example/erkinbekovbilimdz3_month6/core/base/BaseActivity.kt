@@ -32,11 +32,11 @@ abstract class BaseActivity<VB : ViewBinding, VM : ViewModel> : AppCompatActivit
 
     }
 
-    open fun setData(){
+    open fun setData() {
 
     }
 
-    open fun initClickListener(){
+    open fun initClickListener() {
 
     }
 }

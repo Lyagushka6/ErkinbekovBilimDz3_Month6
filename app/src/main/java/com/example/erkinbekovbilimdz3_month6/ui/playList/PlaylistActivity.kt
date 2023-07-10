@@ -1,21 +1,22 @@
 package com.example.erkinbekovbilimdz3_month6.ui.playList
+
 import android.content.Intent
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.example.erkinbekovbilimdz3_month6.core.network.InternetConnection
 import com.example.erkinbekovbilimdz3_month6.core.base.BaseActivity
 import com.example.erkinbekovbilimdz3_month6.core.network.Resource
-import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel
+import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel.Item
 import com.example.erkinbekovbilimdz3_month6.databinding.ActivityPlaylistBinding
 import com.example.erkinbekovbilimdz3_month6.ui.detailPlaylist.DetailPlaylistActivity
 import com.example.erkinbekovbilimdz3_month6.ui.playList.adapter.PlaylistAdapter
 import com.example.erkinbekovbilimdz3_month6.ui.playList.playlistViewModel.PlaylistViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class PlaylistActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel>() {
 
-    override val viewModel: PlaylistViewModel by viewModels()
+    override val viewModel: PlaylistViewModel by viewModel()
     private lateinit var internetConnection: InternetConnection
     private lateinit var adapter: PlaylistAdapter
 
@@ -59,7 +60,7 @@ class PlaylistActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
         }
     }
 
-    private fun onClick(item: PlaylistModel.Item) {
+    private fun onClick(item: Item) {
         val intent = Intent(this@PlaylistActivity, DetailPlaylistActivity::class.java)
         intent.putExtra(KEY_FOR_COUNT, item.contentDetails.itemCount.toString())
         intent.putExtra(KEY_FOR_DESC, item.snippet.description)

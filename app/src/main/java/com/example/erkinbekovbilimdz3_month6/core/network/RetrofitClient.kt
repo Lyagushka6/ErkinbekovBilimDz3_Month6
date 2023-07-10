@@ -6,28 +6,36 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import com.example.erkinbekovbilimdz3_month6.BuildConfig.BASE_URL
+import org.koin.core.scope.get
+import org.koin.dsl.module
 
-class RetrofitClient {
+val networkModule = module {
+    single { provideInterceptor() }
+    factory { provideOkHttpClient(get()) }
+    single { provideRetrofit(get()) }
+    factory { provideApi(get()) }
+}
 
-    companion object {
-        fun create(): ApiService {
-            val interceptor = HttpLoggingInterceptor()
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
-            val okHttpClient = OkHttpClient().newBuilder()
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .addInterceptor(interceptor)
-                .build()
+fun provideInterceptor() = HttpLoggingInterceptor()
+    .setLevel(HttpLoggingInterceptor.Level.BODY)
 
-            val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(com.example.erkinbekovbilimdz3_month6.BuildConfig.BASE_URL)
-                .client(okHttpClient)
-                .build()
+fun provideOkHttpClient(interceptor: HttpLoggingInterceptor) = OkHttpClient().newBuilder()
+    .connectTimeout(20, TimeUnit.SECONDS)
+    .writeTimeout(20, TimeUnit.SECONDS)
+    .readTimeout(20, TimeUnit.SECONDS)
+    .addInterceptor(interceptor)
+    .build()
 
-            return retrofit.create(ApiService::class.java)
-        }
-    }
+fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    return Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(BASE_URL)
+        .client(okHttpClient)
+        .build()
+}
+
+fun provideApi(retrofit: Retrofit): ApiService {
+    return retrofit.create(ApiService::class.java)
 }

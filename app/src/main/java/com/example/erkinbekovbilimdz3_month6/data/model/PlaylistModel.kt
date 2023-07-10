@@ -16,6 +16,7 @@ data class PlaylistModel(
     ) {
         data class ContentDetails(
             val itemCount: Int,
+            val videoId: String,
         )
 
         data class Snippet(

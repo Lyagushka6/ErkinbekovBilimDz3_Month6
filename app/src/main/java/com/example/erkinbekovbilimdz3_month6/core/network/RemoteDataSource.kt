@@ -26,4 +26,12 @@ class RemoteDataSource(private val apiService: ApiService) : BaseDataSource() {
             maxResults = 100,
         )
     }
+
+    suspend fun getVideos(videoId: String) = getResult {
+        apiService.getVideo(
+            part = Constants.PART,
+            apiKey = BuildConfig.API_KEY,
+            videoId = videoId,
+        )
+    }
 }
