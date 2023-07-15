@@ -7,13 +7,13 @@
     tools:context=".ui.playList.PlaylistActivity">
 
     <LinearLayout
-        android:id="@+id/llMainActivity"
+        android:id="@+id/ll_main_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPlaylist"
+            android:id="@+id/rv_playlist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_playlist"
@@ -22,18 +22,18 @@
 
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:progressTint="@color/teal_700"
-        android:indeterminateTint="@color/teal_700"/>
+        android:progressTint="@color/red"
+        android:indeterminateTint="@color/red"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clNoInternet"
+        android:id="@+id/cl_no_internet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">

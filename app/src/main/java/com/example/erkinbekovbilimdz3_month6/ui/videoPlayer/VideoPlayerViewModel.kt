@@ -1,4 +1,4 @@
-package com.example.erkinbekovbilimdz3_month6.ui.videoPlayer.videoPlayerViewModel
+package com.example.erkinbekovbilimdz3_month6.ui.videoPlayer
 
 import androidx.lifecycle.LiveData
 import com.example.erkinbekovbilimdz3_month6.core.base.BaseViewModel

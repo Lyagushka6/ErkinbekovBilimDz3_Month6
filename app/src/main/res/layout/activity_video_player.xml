@@ -9,7 +9,7 @@
 
 
     <LinearLayout
-        android:id="@+id/llMainActivity"
+        android:id="@+id/ll_main_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,12 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/btnBack"
+                android:id="@+id/btn_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:text="@string/back"
-                android:textColor="@color/teal_700"
+                android:textColor="@color/red"
                 android:textSize="16sp"
                 app:drawableStartCompat="@drawable/ic_arrow" />
 
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/playlist_detail"
-                android:textColor="@color/teal_700"
+                android:textColor="@color/red"
                 android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
 
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="240dp">
             <WebView
-                android:id="@+id/webViewPreview"
+                android:id="@+id/web_view_preview"
                 android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -57,18 +57,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvVideoName"
+                    android:id="@+id/tv_video_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginVertical="24dp"
-                    android:fontFamily="sans-serif-black"
+                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:text="@string/text_test6"/>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDownload"
+                    android:id="@+id/btn_download"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
@@ -79,14 +79,15 @@
                     android:paddingVertical="1dp"
                     android:text="@string/download"
                     android:textAllCaps="false"
-                    android:textColor="@color/teal_700"
+                    android:textColor="@color/red"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tvDescription"
+                    android:id="@+id/tv_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    android:textColor="@color/black"
                     android:layout_marginBottom="11dp"
                     android:text="@string/text_test5"
                     android:textSize="16sp" />
@@ -97,7 +98,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clNoInternet"
+        android:id="@+id/cl_no_internet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
@@ -112,10 +113,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

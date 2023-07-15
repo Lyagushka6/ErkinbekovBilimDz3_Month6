@@ -1,4 +1,4 @@
-package com.example.erkinbekovbilimdz3_month6.ui.playList.adapter
+package com.example.erkinbekovbilimdz3_month6.ui.playList
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

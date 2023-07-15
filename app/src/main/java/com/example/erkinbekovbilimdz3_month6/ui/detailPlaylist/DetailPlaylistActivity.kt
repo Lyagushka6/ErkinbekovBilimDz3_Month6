@@ -9,8 +9,6 @@ import com.example.erkinbekovbilimdz3_month6.core.network.InternetConnection
 import com.example.erkinbekovbilimdz3_month6.core.network.Resource
 import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel
 import com.example.erkinbekovbilimdz3_month6.databinding.ActivityDetailPlaylistBinding
-import com.example.erkinbekovbilimdz3_month6.ui.detailPlaylist.adapter.DetailPlaylistAdapter
-import com.example.erkinbekovbilimdz3_month6.ui.detailPlaylist.detailPlatlistViewModel.DetailPlaylistViewModel
 import com.example.erkinbekovbilimdz3_month6.ui.playList.PlaylistActivity.Companion.KEY_FOR_COUNT
 import com.example.erkinbekovbilimdz3_month6.ui.playList.PlaylistActivity.Companion.KEY_FOR_DESC
 import com.example.erkinbekovbilimdz3_month6.ui.playList.PlaylistActivity.Companion.KEY_FOR_ID
@@ -89,7 +87,7 @@ class DetailPlaylistActivity :
     override fun setData() {
         super.setData()
         binding.apply {
-            tvCountVideoDetails.text = intent.getStringExtra(KEY_FOR_COUNT) + " video series"
+            tvCountVideoDetail.text = intent.getStringExtra(KEY_FOR_COUNT) + " video series"
             tvVideoName.text = intent.getStringExtra(KEY_FOR_TITLE)
             tvDescription.text = intent.getStringExtra(KEY_FOR_DESC)
         }

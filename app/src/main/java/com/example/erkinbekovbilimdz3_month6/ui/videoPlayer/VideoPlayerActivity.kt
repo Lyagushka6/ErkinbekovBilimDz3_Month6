@@ -1,22 +1,33 @@
 package com.example.erkinbekovbilimdz3_month6.ui.videoPlayer
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.example.erkinbekovbilimdz3_month6.BuildConfig
 import com.example.erkinbekovbilimdz3_month6.core.base.BaseActivity
 import com.example.erkinbekovbilimdz3_month6.core.network.InternetConnection
 import com.example.erkinbekovbilimdz3_month6.core.network.Resource
 import com.example.erkinbekovbilimdz3_month6.databinding.ActivityVideoPlayerBinding
+import com.example.erkinbekovbilimdz3_month6.databinding.DownloadAlertDialogBinding
 import com.example.erkinbekovbilimdz3_month6.ui.detailPlaylist.DetailPlaylistActivity
-import com.example.erkinbekovbilimdz3_month6.ui.videoPlayer.videoPlayerViewModel.VideoPlayerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class VideoPlayerActivity : BaseActivity<ActivityVideoPlayerBinding, VideoPlayerViewModel>() {
 
-
-    override val viewModel: VideoPlayerViewModel by viewModel()
     private lateinit var internetConnection: InternetConnection
-    override fun inflateViewBinding() = ActivityVideoPlayerBinding.inflate(layoutInflater)
+    private lateinit var dialogBinding: DownloadAlertDialogBinding
+    override val viewModel: VideoPlayerViewModel by viewModel()
+
+    private fun inflateDialogBinding() {
+        dialogBinding = DownloadAlertDialogBinding.inflate(layoutInflater)
+    }
+
+    override fun inflateViewBinding(): ActivityVideoPlayerBinding {
+        inflateDialogBinding()
+        return ActivityVideoPlayerBinding.inflate(layoutInflater)
+    }
 
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -32,11 +43,13 @@ class VideoPlayerActivity : BaseActivity<ActivityVideoPlayerBinding, VideoPlayer
                     when (it.status) {
                         Resource.Status.SUCCESS -> {
                             binding.apply {
-                                it.data?.items!![0].snippet.title.also { tvVideoName.text = it }
-                                it.data.items[0].snippet.description.also {
+                                it.data?.items?.first()?.snippet?.title.also {
+                                    tvVideoName.text = it
+                                }
+                                it.data?.items?.first()?.snippet?.description.also {
                                     tvDescription.text = it
                                 }
-                                binding.webViewPreview.loadUrl("https://www.youtube.com/embed/${it.data.items[0].id}")
+                                binding.webViewPreview.loadUrl("${BuildConfig.PLAYER_URL}${it.data?.items?.first()?.id}")
                             }
                             viewModel.loading.postValue(false)
                         }
@@ -58,6 +71,9 @@ class VideoPlayerActivity : BaseActivity<ActivityVideoPlayerBinding, VideoPlayer
         binding.btnBack.setOnClickListener {
             finish()
         }
+        binding.btnDownload.setOnClickListener {
+            showDownloadDialog()
+        }
     }
 
     override fun checkInternet() {
@@ -72,5 +88,33 @@ class VideoPlayerActivity : BaseActivity<ActivityVideoPlayerBinding, VideoPlayer
                 binding.llMainActivity.isVisible = false
             }
         }
+    }
+
+    private fun showDownloadDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+            .setView(dialogBinding.root)
+
+        val dialog = dialogBuilder.create()
+
+        val parentView = dialogBinding.root.parent as? ViewGroup
+        parentView?.removeView(dialogBinding.root)
+
+        dialogBinding.btnDownload.setOnClickListener {
+            val selectedQuality = when (dialogBinding.radioGroup.checkedRadioButtonId) {
+                dialogBinding.radioButton480p.id -> "480p"
+                dialogBinding.radioButton720.id -> "720p"
+                dialogBinding.radioButton1080p.id -> "1080p"
+                else -> "null"
+            }
+            Toast.makeText(
+                this,
+                "Скачивается, качество видео: $selectedQuality",
+                Toast.LENGTH_SHORT
+            ).show()
+            dialog.dismiss()
+
+        }
+
+        dialog.show()
     }
 }

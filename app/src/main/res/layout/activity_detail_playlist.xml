@@ -7,20 +7,20 @@
     tools:context=".ui.videoPlayer.VideoPlayerActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/clMainActivity"
+        android:id="@+id/cl_main_activity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/background_light"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/AppBarLayout"
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:fitsSystemWindows="true">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/main.collapsing"
+                android:id="@+id/toolBar_collapsing"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -34,7 +34,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/tvVideoName"
+                        android:id="@+id/tv_video_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -51,7 +51,7 @@
                         app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView
-                        android:id="@+id/tvDescription"
+                        android:id="@+id/tv_description"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -61,11 +61,11 @@
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvVideoName" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_video_name" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolBar"
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@color/white"
@@ -82,16 +82,16 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="@string/playlist_detail"
-                            android:textColor="@color/teal_700"
+                            android:textColor="@color/red"
                             android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/btnBack"
+                            android:id="@+id/btn_back"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/back"
-                            android:textColor="@color/teal_700"
+                            android:textColor="@color/red"
                             android:layout_marginTop="2dp"
                             android:textSize="16sp"
                             app:drawableStartCompat="@drawable/ic_arrow" />
@@ -102,7 +102,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             tools:listitem="@layout/item_detail_playlist"
-            android:id="@+id/rvPlaylistDetail"
+            android:id="@+id/rv_playlist_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="30dp"
@@ -114,17 +114,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/btnPlay"
             android:layout_marginHorizontal="32dp"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/red"
             android:src="@drawable/ic_play_arrow"
             app:fabCustomSize="60dp"
-            app:layout_anchor="@id/AppBarLayout"
+            app:layout_anchor="@id/app_bar_layout"
             app:layout_anchorGravity="bottom|right|end"
             app:maxImageSize="30dp"
             app:tint="@color/white"
-            android:contentDescription="TODO" />
+            tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/tvCountVideoDetails"
+            android:id="@+id/tv_count_video_detail"
             android:text="@string/video_int"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -132,12 +132,12 @@
             android:paddingBottom="10dp"
             android:layout_marginHorizontal="16dp"
             android:textColor="@color/black"
-            app:layout_anchor="@id/AppBarLayout"
+            app:layout_anchor="@id/app_bar_layout"
             app:layout_anchorGravity="bottom|left|start" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clNoInternet"
+        android:id="@+id/cl_no_internet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
@@ -153,10 +153,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/teal_700"
+        android:backgroundTint="@color/red"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,6 +1,7 @@
 package com.example.erkinbekovbilimdz3_month6.ui.playList
 
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.erkinbekovbilimdz3_month6.core.network.InternetConnection
@@ -9,9 +10,8 @@ import com.example.erkinbekovbilimdz3_month6.core.network.Resource
 import com.example.erkinbekovbilimdz3_month6.data.model.PlaylistModel.Item
 import com.example.erkinbekovbilimdz3_month6.databinding.ActivityPlaylistBinding
 import com.example.erkinbekovbilimdz3_month6.ui.detailPlaylist.DetailPlaylistActivity
-import com.example.erkinbekovbilimdz3_month6.ui.playList.adapter.PlaylistAdapter
-import com.example.erkinbekovbilimdz3_month6.ui.playList.playlistViewModel.PlaylistViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 
 class PlaylistActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel>() {
@@ -63,10 +63,9 @@ class PlaylistActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
     private fun onClick(item: Item) {
         val intent = Intent(this@PlaylistActivity, DetailPlaylistActivity::class.java)
         intent.putExtra(KEY_FOR_COUNT, item.contentDetails.itemCount.toString())
-        intent.putExtra(KEY_FOR_DESC, item.snippet.description)
         intent.putExtra(
             KEY_FOR_DESC,
-            "Популярный русскоязычный YouTube-канал, предлагающий разнообразный контент об играх, автомобилях и развлечениях. Подписчиков привлекает юмор, аутентичность и захватывающие моменты, создаваемые харизматичным ведущим."
+            "Здесь могла быть ваша реклама."
         )
         intent.putExtra(KEY_FOR_TITLE, item.snippet.title)
         intent.putExtra(KEY_FOR_ID, item.id)

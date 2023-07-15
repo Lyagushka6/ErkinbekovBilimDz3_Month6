@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:text="@string/select_video_quality" />
+
+        <RadioGroup
+            android:layout_marginStart="16dp"
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_button_1080p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_1080p"
+                android:buttonTint="@color/red"/>
+
+            <RadioButton
+                android:id="@+id/radio_button_720"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_720p"
+                android:buttonTint="@color/red"/>
+
+            <RadioButton
+                android:id="@+id/radio_button_480p"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_480p"
+                android:buttonTint="@color/red"/>
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_margin="16dp"/>
+    </LinearLayout>
