@@ -16,6 +16,7 @@ import com.example.erkinbekovbilimdz3_month6.databinding.ActivityVideoPlayerBind
 import com.example.erkinbekovbilimdz3_month6.databinding.DownloadAlertDialogBinding
 import com.example.erkinbekovbilimdz3_month6.ui.detailPlaylist.DetailPlaylistActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class VideoPlayerActivity : BaseActivity<ActivityVideoPlayerBinding, VideoPlayerViewModel>() {
 
@@ -125,12 +126,14 @@ class VideoPlayerActivity : BaseActivity<ActivityVideoPlayerBinding, VideoPlayer
 
     private fun downloadVideo(videoId: String, quality: String, videoTitle: String) {
         val youtubeUrl = "https://www.youtube.com/watch?v=$videoId"
+        val fileName = "${UUID.randomUUID()}.mp4"
         val downloadUrl = "$youtubeUrl&quality=$quality"
 
         val request = DownloadManager.Request(Uri.parse(downloadUrl))
             .setTitle("$videoTitle ($quality)")
+            .setDescription("Downloading video")
             .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            .setDestinationInExternalFilesDir(this, null, videoTitle)
+            .setDestinationInExternalFilesDir(this, null, fileName)
 
         val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         downloadManager.enqueue(request)
