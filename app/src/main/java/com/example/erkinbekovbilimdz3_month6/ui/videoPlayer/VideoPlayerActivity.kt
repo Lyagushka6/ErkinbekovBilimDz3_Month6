@@ -2,6 +2,9 @@ package com.example.erkinbekovbilimdz3_month6.ui.videoPlayer
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -106,15 +109,32 @@ class VideoPlayerActivity : BaseActivity<ActivityVideoPlayerBinding, VideoPlayer
                 dialogBinding.radioButton1080p.id -> "1080p"
                 else -> "null"
             }
-            Toast.makeText(
-                this,
-                "Скачивается, качество видео: $selectedQuality",
-                Toast.LENGTH_SHORT
-            ).show()
-            dialog.dismiss()
 
+            val videoId = intent.getStringExtra(DetailPlaylistActivity.KEY_FOR_VIDEO)
+            val videoTitle = binding.tvVideoName.text.toString()
+
+            if (videoId != null) {
+                downloadVideo(videoId, selectedQuality, videoTitle)
+            }
+
+            dialog.dismiss()
         }
 
         dialog.show()
+    }
+
+    private fun downloadVideo(videoId: String, quality: String, videoTitle: String) {
+        val youtubeUrl = "https://www.youtube.com/watch?v=$videoId"
+        val downloadUrl = "$youtubeUrl&quality=$quality"
+
+        val request = DownloadManager.Request(Uri.parse(downloadUrl))
+            .setTitle("$videoTitle ($quality)")
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+            .setDestinationInExternalFilesDir(this, null, videoTitle)
+
+        val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        downloadManager.enqueue(request)
+
+        Toast.makeText(this, "Скачивается...", Toast.LENGTH_SHORT).show()
     }
 }
